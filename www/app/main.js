@@ -9,7 +9,8 @@ Watch.app = {
 		};
 		this.views = {
 			dash: new DashView({el: '#dashView',
-					template: '#dashTemplate'
+					template: '#dashTemplate',
+					model:that.models.init
 							}),
 		};
 		Backbone.history.start();

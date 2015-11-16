@@ -16,8 +16,7 @@ var InitModel = Backbone.Model.extend({
 		if(!options) {
 			options.city = London; 
 			options.country=uk;
-		}
-		
+		}		
  
 		this.url='http://api.openweathermap.org/data/2.5/forecast?q='+options.city+','+options.country+'&appid='+this.appId;
 
@@ -41,34 +40,6 @@ var InitModel = Backbone.Model.extend({
 		//return parsed;
 	},
 
-	textToXml: function(text) {
-      try {
-        var xml = null;
 
-        if ( window.DOMParser ) {
-
-          var parser = new DOMParser();
-          xml = parser.parseFromString( text, "text/xml" );
-
-          var found = xml.getElementsByTagName( "parsererror" );
-
-          if ( !found || !found.length || !found[ 0 ].childNodes.length ) {
-            return xml;
-          }
-
-          return null;
-        } else {
-
-          xml = new ActiveXObject( "Microsoft.XMLDOM" );
-
-          xml.async = false;
-          xml.loadXML( text );
-
-          return xml;
-        }
-      } catch ( e ) {
-        return null;
-      }
-    }
 
 });

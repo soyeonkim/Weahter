@@ -11,16 +11,16 @@ var InitModel = Backbone.Model.extend({
 
 	fetch: function(options) {
 		if(!options) (options = {});
-		this.url= CINE.urls.initUrl(CINE.platform.cellularNetwork);
+		this.url='http://api.openweathermap.org/data/2.5/forecast?q=London,us';
 
-		options.beforeSend = CINE.urls.addAmpRequestHeaders;
-		options.dataType="xml";
+		//options.beforeSend = CINE.urls.addAmpRequestHeaders;
+		options.dataType="json";
 		Backbone.Model.prototype.fetch.call(this, options);
 	},
 
 	parse: function(response, options) {
 
-		if(CINE.LOG) console.log("InitModel parse", response);
+		console.log("InitModel parse", response);
 
 		var jathTemplate = { 
 			status: "richmediaresponse/action/respStatus",

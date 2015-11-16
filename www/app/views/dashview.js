@@ -9,18 +9,19 @@ var DashView = Backbone.View.extend({
     },
 
     initialize : function() {
-        if (CINE.LOG) console.log('DashView.initialize');
-        this.template = JST["dash.tmpl"];
-        if (CINE.LOG) console.log('DashView.InitDashLoad', this.dashload);
+        console.log('DashView.initialize');
+        this.template = Handlebars.compile($('#dashViewTemplate').html());
+        console.log('DashView.InitDashLoad', this.dashload);
 
         var that = this;
         $(window).on("resize", function(e) {
             that.resize();
         });
+        that.render();
     },
 
     resize: function() {
-        if(CINE.LOG) console.log("Resizing dash view");
+         console.log("Resizing dash view");
         var lesFilmsContainer = this.$el.find("#lesFilms");
         var containerWidth = lesFilmsContainer.parent().width();
         var containerHeight = lesFilmsContainer.parent().height();
@@ -45,11 +46,11 @@ var DashView = Backbone.View.extend({
     },
 
     render : function(eventName) {
-        if(CINE.LOG) console.log('DashView.render');
+        console.log('DashView.render');
        
-        this.$el.html(this.template(CINE.strings));
-        this.resize();
-        this.drawTicket();
+        this.$el.html(this.template());
+       // this.resize();
+       // this.drawTicket();
         return this;
     },
 

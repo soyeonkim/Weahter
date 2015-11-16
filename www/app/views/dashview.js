@@ -17,7 +17,7 @@ var DashView = Backbone.View.extend({
         $(window).on("resize", function(e) {
             that.resize();
         });
-        that.render();
+       // that.render();
     },
 
     resize: function() {
@@ -46,7 +46,8 @@ var DashView = Backbone.View.extend({
     },
 
     render : function(eventName) {
-        console.log('DashView.render');
+        var data = this.model.toJSON();
+        console.log('DashView.render',data);
        
         this.$el.html(this.template());
        // this.resize();

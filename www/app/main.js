@@ -1,4 +1,5 @@
 var Watch = Watch || {}
+Watch.LOG = true;
 
 Watch.app = {
 	start:function () {
@@ -13,6 +14,9 @@ Watch.app = {
 					model:that.models.init
 							}),
 		};
+
+		this.router = new AppRouter(this);
+
 		Backbone.history.start();
 		this.startupRequests();
 	},
@@ -21,6 +25,7 @@ Watch.app = {
 		Watch.platform.clearCache();
 	},
 	startupRequests:function() {
+		var that = this;
 		console.log("starting request ...");
 
 		var initError = function() {
@@ -36,6 +41,7 @@ Watch.app = {
 	    		if(Watch.LOG) console.log("Implicit not authorised and connected on cellular, authorising...");
 	    		Watch.app.models.implicitauth.fetch({ success: success, error: success });
 	    	}*/
+	    	that.router.showApp();
 	    };
 		Watch.app.models.init.fetch({ success: initSuccess, error: initError });
 	}

@@ -27,7 +27,65 @@
 
 	<!-- ---------------------TEMPLATE INCLUDES --------------------------- -->
 	<script id="dashViewTemplate" type="text/x-handlebars-template">
-		<div>TEST</div>
+		<div class='bg-container-outer'>
+			<div class='bg-container-inner'>
+				<div>
+					<h1>WEATHER</h1>
+
+					<span>{{city.name}}</span>
+				</div>
+				<div class='option'>
+					<div class='setting-control'>
+					  	<button type='button'>Settings</button>
+					  	<div class="gelui-wrapper gelui-1-overlay" role="dialog" aria-hidden="true">
+					  		<div class="gelui-overlay-state">
+					  			<div class="gelui-overlay-container" style="display: none;">
+					  				<div class="settings-panel"> 
+					  					<span class="arrow-up"></span>   
+					  					<div id="unit-picker" class=" configured configured"> 
+					  						<ul class="temp unit-options" data-unit-type="temperature"> 
+					  							<li data-unit="c" class="unit-option unit-option-c selected">°C</li> 
+					  							<li data-unit="f" class="unit-option unit-option-f "> <a href="/weather/?tempUnit=F" rel="nofollow">°F</a></li>
+					  						</ul> 
+							  				<ul class="wind unit-options" data-unit-type="windspeed"> 
+							  					<li data-unit="mph" class="unit-option unit-option-mph selected"> mph </li>
+							  					<li data-unit="kph" class="unit-option unit-option-kph "> <a href="/weather/?windUnit=K" rel="nofollow">km/h</a> </li> 
+							  				</ul> 
+							  			</div>
+							  		</div>
+					  			</div>
+					  		</div>
+					  	</div>
+					</div>
+				</div>
+				<div class="daily-window">
+
+					<ul class="daily">
+					{{#list}}
+						<li class="daily__day-tab">
+							<a>
+								<div class="daily_day-header">
+									<h3 class="daily_day-date">
+										<span class="day-name"></span>
+									</h3>
+								</div>
+								<div class="weather-type-image">
+								{{#weather}}
+									<img alt={{description}} src="http://openweathermap.org/img/w/{{icon}}.png">
+									{{/weather}}
+								</div>
+							</a>
+						</li>
+						{{/list}}
+					</ul>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
 	</script>
 
 	<!-- ---------------------JAVASCRIPT INCUDES--------------------------- -->

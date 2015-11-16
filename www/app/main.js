@@ -37,11 +37,8 @@ Watch.app = {
 
 	    var initSuccess = function() {
 	    	console.log("Init request complete.");
-	    	/*if(Watch.platform.cellularNetwork && !Watch.app.models.implicitauth.authorised()) {
-	    		if(Watch.LOG) console.log("Implicit not authorised and connected on cellular, authorising...");
-	    		Watch.app.models.implicitauth.fetch({ success: success, error: success });
-	    	}*/
-	    	that.router.showApp();
+
+	    	that.router.showDash();
 	    };
 		Watch.app.models.init.fetch({ success: initSuccess, error: initError });
 	}

@@ -2,20 +2,15 @@
 var InitModel = Backbone.Model.extend({
 	appId :'2de143494c0b295cca9337e1e96b00e0',
 
-	defaults: {
-		"status": "-1",
-		"customer":  "0"
-
-	},
 
 
 	initialize: function() {
 	},
 
 	fetch: function(options) {
-		if(!options) {
-			options.city = London; 
-			options.country=uk;
+		if(!options.city) {
+			options.city = 'London'; 
+			options.country='uk';
 		}		
  
 		this.url='http://api.openweathermap.org/data/2.5/forecast?q='+options.city+','+options.country+'&appid='+this.appId;
@@ -38,6 +33,7 @@ var InitModel = Backbone.Model.extend({
 
 		 
 		//return parsed;
+		return response;
 	},
 
 
